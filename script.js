@@ -11,25 +11,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (username === 'myprogram' && password === '123') {
                 localStorage.setItem('isLoggedIn', 'true');
-                window.location.href = 'HomePage.html'; // Chuyển sang trang chính sau đăng nhập
+                window.location.href = "templates/HomePage.html"; // Chuyển sang trang chính sau đăng nhập
             } else {
                 if (errorMsg) errorMsg.textContent = 'Sai tài khoản hoặc mật khẩu!';
             }
         });
-    }
-});
-// Tìm form có ID "loginForm" và gắn sự kiện submit
-document.getElementById("loginForm")?.addEventListener("submit", function(e) {
-    e.preventDefault();
-    let username = document.getElementById("username").value; 
-    let password = document.getElementById("password").value; 
-    let errorElement = document.getElementById("error"); 
-    if (
-      (username === "myprogram" && password === "123")
-    ) {
-        window.location.href = "templates/HomePage.html";
-    } else {
-        errorElement.textContent = "Sai tài khoản hoặc mật khẩu";
     }
 });
 
