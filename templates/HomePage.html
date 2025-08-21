@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - InnovateWeb</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <script>
+    if (localStorage.getItem('isLoggedIn') !== 'true') {
+        window.location.href = '../index.html';
+    }
+    </script>
+    <!-- Thanh điều hướng -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="HomePage.html">Home</a></li>
+            <li><a href="Profile.html">Profile</a></li>
+            <li><a href="Products.html">Products</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+            <li><a href="About.html">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Welcome to InnovateWeb</h1>
+            <p>Discover cutting-edge web solutions designed for speed, responsiveness, and style.</p>
+            <a href="Contact.html" class="cta-button">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Phần tính năng -->
+    <div class="container">
+        <div class="features-section animate-section">
+            <h2>Why Choose Us</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400" alt="Fast Design">
+                    <h3>Fast & Modern Design</h3>
+                    <p>Our websites load quickly and feature sleek, modern aesthetics.</p>
+                </div>
+                <div class="feature-item">
+                    <img src="https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg?w=400" alt="Responsive">
+                    <h3>Fully Responsive</h3>
+                    <p>Seamless experience across desktops, tablets, and mobile devices.</p>
+                </div>
+                <div class="feature-item">
+                    <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg" alt="Navigation">
+                    <h3>Easy Navigation</h3>
+                    <p>Intuitive navbar design for effortless browsing.</p>
+                </div>
+                <div class="feature-item">
+                    <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=400" alt="Glass Effect">
+                    <h3>Glassmorphism Effect</h3>
+                    <p>Stylish, frosted-glass visuals for a premium look.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phần dịch vụ -->
+        <div class="services-section animate-section">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <img src="https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?w=400" alt="Web Development">
+                    <div>
+                        <h3>Web Development</h3>
+                        <p>Custom-built websites tailored to your business needs, with modern technologies.</p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <img src="https://images.pexels.com/photos/34950/pexels-photo.jpg?w=400" alt="UI/UX Design">
+                    <div>
+                        <h3>UI/UX Design</h3>
+                        <p>User-centric designs that enhance engagement and usability.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Font Awesome cho icon (nếu cần sau này) -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="../script.js"></script>
+    <script>
+        // Kiểm tra trạng thái đăng nhập
+        if (!localStorage.getItem("isLoggedIn")) {
+            window.location.href = "login.html"; // Chuyển hướng nếu chưa đăng nhập
+        }
+
+        // Hiệu ứng parallax cho hero section
+        window.addEventListener('scroll', function() {
+            const hero = document.querySelector('.hero-section');
+            let scrollPosition = window.pageYOffset;
+            hero.style.backgroundPositionY = scrollPosition * 0.5 + 'px'; // Parallax nhẹ
+        });
+
+        // Hiệu ứng xuất hiện khi cuộn
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.animate-section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
