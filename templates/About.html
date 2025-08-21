@@ -19,11 +19,11 @@
     <!-- Thanh điều hướng -->
     <nav class="navbar">
         <ul>
-            <li><a href="HomePage.html">Home</a></li>
-            <li><a href="Profile.html">Profile</a></li>
-            <li><a href="Products.html">Products</a></li>
-            <li><a href="Contact.html">Contact</a></li>
-            <li><a href="About.html">About</a></li>
+            <li><a href="/templates/HomePage.html">Home</a></li>
+            <li><a href="/templates/Profile.html">Profile</a></li>
+            <li><a href="/templates/Products.html">Products</a></li>
+            <li><a href="/templates/Contact.html">Contact</a></li>
+            <li><a href="/templates/About.html">About</a></li>
         </ul>
     </nav>
 
@@ -99,7 +99,7 @@
     <script>
         // Kiểm tra trạng thái đăng nhập
         if (!localStorage.getItem("isLoggedIn")) {
-            window.location.href = "login.html"; // Chuyển hướng nếu chưa đăng nhập
+            window.location.href = "/index.html"; // Chuyển hướng nếu chưa đăng nhập
         }
 
         // Hiệu ứng parallax cho hero và team section
