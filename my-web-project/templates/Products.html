@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products - InnovateWeb</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <!-- Thanh điều hướng -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="HomePage.html">Home</a></li>
+            <li><a href="Profile.html">Profile</a></li>
+            <li><a href="Products.html">Products</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+            <li><a href="About.html">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Our Products</h1>
+            <p>Explore our innovative range of web solutions designed to elevate your business.</p>
+            <a href="#products" class="cta-button">Discover Now</a>
+        </div>
+    </section>
+
+    <!-- Danh sách sản phẩm -->
+    <div class="container">
+        <div class="filter-section animate-section">
+            <h2>Explore Our Products</h2>
+            <select id="product-filter">
+                <option value="all">All Products</option>
+                <option value="web">Web Solutions</option>
+                <option value="design">Design Tools</option>
+            </select>
+        </div>
+        <div class="product-list animate-section" id="products">
+            <div class="product-item" data-category="web">
+                <h3>Web Pro</h3>
+                <p>A high-quality web platform for seamless business operations.</p>
+                <p class="price">$99.99</p>
+                <a href="#">View Details</a>
+            </div>
+            <div class="product-item" data-category="design">
+                <h3>Design Suite</h3>
+                <p>Powerful tools for creating stunning UI/UX designs.</p>
+                <p class="price">$149.99</p>
+                <a href="#">View Details</a>
+            </div>
+            <div class="product-item" data-category="web">
+                <h3>E-Commerce Boost</h3>
+                <p>Perfect solution for online stores and marketplaces.</p>
+                <p class="price">$199.99</p>
+                <a href="#">View Details</a>
+            </div>
+            <div class="product-item" data-category="design">
+                <h3>Creative Hub</h3>
+                <p>Innovative platform for collaborative design projects.</p>
+                <p class="price">$129.99</p>
+                <a href="#">View Details</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Font Awesome cho icon (dự phòng) -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="../script.js"></script>
+    <script>
+        // Kiểm tra trạng thái đăng nhập
+        if (!localStorage.getItem("isLoggedIn")) {
+            window.location.href = "login.html"; // Chuyển hướng nếu chưa đăng nhập
+        }
+
+        // Hiệu ứng parallax cho hero section
+        window.addEventListener('scroll', function() {
+            const hero = document.querySelector('.hero-section');
+            let scrollPosition = window.pageYOffset;
+            hero.style.backgroundPositionY = scrollPosition * 0.5 + 'px'; // Parallax nhẹ
+        });
+
+        // Hiệu ứng xuất hiện khi cuộn
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.animate-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Lọc sản phẩm
+        document.getElementById('product-filter').addEventListener('change', function() {
+            const filter = this.value;
+            const items = document.querySelectorAll('.product-item');
+            items.forEach(item => {
+                if (filter === 'all' || item.dataset.category === filter) {
+                    item.style.display = 'block';
+                    item.style.opacity = '0';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transition = 'opacity 0.5s ease';
+                    }, 100);
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

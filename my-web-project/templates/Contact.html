@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - InnovateWeb</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <!-- Thanh điều hướng -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="HomePage.html">Home</a></li>
+            <li><a href="Profile.html">Profile</a></li>
+            <li><a href="Products.html">Products</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+            <li><a href="About.html">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Contact Us</h1>
+            <p>We're here to answer your questions and help you succeed. Reach out today!</p>
+        </div>
+    </section>
+
+    <!-- Form liên hệ -->
+    <div class="container">
+        <div class="contact-container animate-section">
+            <h2>Send Us a Message</h2>
+            <p style="text-align: center; color: #444; margin-bottom: 20px;">Fill out the form below, and we'll get back to you soon!</p>
+            <form class="contact-form">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Your Name" required>
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Your Email" required>
+                <label for="message">Message</label>
+                <textarea id="message" placeholder="Your Message" rows="6" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+
+        <!-- Thông tin liên hệ -->
+        <div class="contact-info animate-section">
+            <div class="info-item">
+                <i class="fas fa-envelope"></i>
+                <p>Email</p>
+                <p><a href="mailto:support@innovateweb.com">support@innovateweb.com</a></p>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-phone"></i>
+                <p>Phone</p>
+                <p><a href="tel:+842839876543">+84 283 987 6543</a></p>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>Address</p>
+                <p>123 Nguyen Van Cu, Ho Chi Minh City, Vietnam</p>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-globe"></i>
+                <p>Social Media</p>
+                <p>
+                    <a href="https://facebook.com/innovateweb">Facebook</a> | 
+                    <a href="https://twitter.com/innovateweb">Twitter</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- Bản đồ -->
+        <div class="map-section animate-section">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.4471691410513!2d106.69169431474915!3d10.77638999231818!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f38d83c79e7%3A0x1b0c2c4b7e6d7f4!2sNguyen%20Van%20Cu%2C%20Ho%20Chi%20Minh%20City%2C%20Vietnam!5e0!3m2!1sen!2s!4v1698765432100!5m2!1sen!2s" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <!-- Font Awesome cho icon -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="../script.js"></script>
+    <script>
+        // Kiểm tra trạng thái đăng nhập
+        if (!localStorage.getItem("isLoggedIn")) {
+            window.location.href = "login.html"; // Chuyển hướng nếu chưa đăng nhập
+        }
+
+        // Hiệu ứng parallax cho hero section
+        window.addEventListener('scroll', function() {
+            const hero = document.querySelector('.hero-section');
+            let scrollPosition = window.pageYOffset;
+            hero.style.backgroundPositionY = scrollPosition * 0.5 + 'px'; // Parallax nhẹ
+        });
+
+        // Hiệu ứng xuất hiện khi cuộn
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.animate-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Xử lý form submit
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Ngăn reload trang
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Giả lập gửi dữ liệu (thay thế bằng API thực tế nếu có)
+            alert(`Thank you, ${name}! Your message has been sent. We'll contact you at ${email} soon.`);
+            this.reset(); // Xóa form sau khi gửi
+        });
+    </script>
+</body>
+</html>
